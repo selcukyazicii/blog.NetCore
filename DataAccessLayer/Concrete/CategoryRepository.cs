@@ -13,27 +13,40 @@ namespace DataAccess.Concrete
         Context context = new Context();
         public void Add(Category category)
         {
-            
+            context.Add(category);
+            context.SaveChanges();
         }
 
         public void Delete(Category category)
         {
-            throw new NotImplementedException();
+            context.Remove(category);
+            context.SaveChanges();
         }
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Categories.ToList();
         }
 
         public Category GetById(int id)
+        {
+            return context.Categories.Find(id);
+        }
+
+        public Category GeyById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Category t)
         {
             throw new NotImplementedException();
         }
 
         public void Update(Category category)
         {
-            throw new NotImplementedException();
+            context.Update(category);
+            context.SaveChanges();  
         }
     }
 }
