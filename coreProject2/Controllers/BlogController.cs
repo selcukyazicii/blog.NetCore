@@ -13,7 +13,12 @@ namespace coreProject2.Controllers
         BlogManager _blogManager = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            var values = _blogManager.GetList();
+            var values = _blogManager.ListCategoryWithBlog();
+            return View(values);
+        }
+        public IActionResult BlogReadMore(int id)
+        {
+            var values = _blogManager.GetBlogById(id);
             return View(values);
         }
     }

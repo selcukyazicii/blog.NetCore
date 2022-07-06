@@ -14,5 +14,7 @@ namespace Business.Abstract
         void UpdateBlog(Blog blog);
         List<Blog> GetList();
         Blog GetById();
+        List<Blog> ListCategoryWithBlog();
+        
     }
 }

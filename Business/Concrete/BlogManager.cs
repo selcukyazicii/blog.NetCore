@@ -36,6 +36,16 @@ namespace Business.Concrete
             return _blogDal.GetAll();
         }
 
+        public List<Blog> ListCategoryWithBlog()
+        {
+           return _blogDal.GetListWithCategory();
+        }
+
+        public List<Blog>GetBlogById(int id)
+        {
+            return _blogDal.GetAll(x => x.BlogID == id);
+        }
+
         public void UpdateBlog(Blog blog)
         {
             throw new NotImplementedException();
