@@ -30,7 +30,7 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
-
+        
         public List<Blog> GetList()
         {
             return _blogDal.GetAll();

@@ -18,6 +18,7 @@ namespace coreProject2.Controllers
         }
         public IActionResult BlogReadMore(int id)
         {
+            ViewBag.i = id;
             var values = _blogManager.GetBlogById(id);
             return View(values);
         }

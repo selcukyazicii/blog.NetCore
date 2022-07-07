@@ -6,20 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace coreProject2.Controllers
+namespace coreProject2.ViewComponents
 {
-    public class CategoryController : Controller
+    public class CategoryListViewComponent:ViewComponent
     {
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
-        public IActionResult Index()
+        BlogManager _blogManager = new BlogManager(new EfBlogRepository());
+        public IViewComponentResult Invoke()
         {
-            var value = _categoryManager.GetList();
-            return View(value);
-        }
-        public PartialViewResult CategoryList()
-        {
+            //int number=_b
             var values = _categoryManager.GetList();
-            return PartialView(values);
+            return View(values);
         }
     }
 }
