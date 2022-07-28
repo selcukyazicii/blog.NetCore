@@ -50,5 +50,10 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public List<Blog> ListBlogByWriter(int id)
+        {
+            throw new NotImplementedException(); 
+        }
     }
 }
