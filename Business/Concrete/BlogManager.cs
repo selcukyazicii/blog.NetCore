@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public List<Blog> ListBlogByWriter(int id)
         {
-            throw new NotImplementedException(); 
+            return _blogDal.GetAll(x => x.WriterId == id);
         }
     }
 }
