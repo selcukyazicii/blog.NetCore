@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.EntityFramework;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,16 @@ namespace coreProject2.Controllers
         {
             return View();
         }
+        [HttpGet]
         public PartialViewResult PartialAddComment()
         {
             return PartialView();
+        }
+        [HttpPost]
+        public IActionResult PartialAddComent(Comment comment)
+        {
+            _commentManager.AddComment(comment);
+            return RedirectToAction("Index", "Blog");
         }
         public PartialViewResult CommentListByBlogg(int id)
         {

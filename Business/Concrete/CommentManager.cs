@@ -18,7 +18,10 @@ namespace Business.Concrete
         }
         public void AddComment(Comment comment)
         {
-            throw new NotImplementedException();
+            comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            comment.CommentStatus = true;
+            comment.BlogID = 4;
+            _commentDal.Insert(comment);
         }
          
         public List<Comment> GetListComment(int id)

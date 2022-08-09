@@ -19,11 +19,12 @@ namespace coreProject2.Controllers
             return PartialView();
         }
         [HttpPost]
-        public PartialViewResult SubscribeMail(NewsLetter newsLetter)
+        public IActionResult SubscribeMail(NewsLetter newsLetter)
         {
             newsLetter.MailStatus = true;
             newsLetterManager.AddNewsLetter(newsLetter);
-            return PartialView();
+            //return PartialView();
+            return RedirectToAction("Index", "Blog");
         }
     }
 }
