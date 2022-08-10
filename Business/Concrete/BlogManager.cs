@@ -4,6 +4,7 @@ using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,18 +31,18 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
-        
+
         public List<Blog> GetList()
         {
             return _blogDal.GetAll();
         }
 
-        public List<Blog> ListCategoryWithBlog()
+        public List<Blog> ListCategoryWithBlog(string searchText)
         {
-           return _blogDal.GetListWithCategory();
+            return _blogDal.GetListWithCategory(searchText);
         }
 
-        public List<Blog>GetBlogById(int id)
+        public List<Blog> GetBlogById(int id)
         {
             return _blogDal.GetAll(x => x.BlogID == id);
         }

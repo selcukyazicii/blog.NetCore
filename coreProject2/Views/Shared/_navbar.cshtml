@@ -23,12 +23,51 @@
                     <a class="nav-link" href="contact.html">İletişim</a>
                 </li>
             </ul>
-            <form action="#" method="post" class="form-inline my-2 my-lg-0 header-search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Aranacak kelime..." name="Search" required="">
+
+            @*<div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-inline fa-pull-right">
+                            <label>Search</label>
+                            <input type="text" class="form-control" id="txtSearch" />
+                        </div>
+                    </div>
+                    <div id="grdUsers"></div>
+                </div>*@
+
+            <form asp-action="SearchBlog" asp-controller="Blog" method="get" class="form-inline my-2 my-lg-0 header-search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Aranacak kelime..." name="searchText" id="searchText" required="">
                 <button class="btn btn1 my-2 my-sm-0" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
+
+
+
         </div>
     </nav>
 </div>
+@*<script>
+        function getUsers() {
+            $.ajax({
+                dataType: 'html',
+                method: 'GET',
+                url: '@Url.Action("Index","Blog")',
+
+                data: { searchText: $('#txtSearch').val },
+                success: function (res) {
+                    $('#grdUsers').html('').html(res)
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+        $(() => {
+            getUsers();
+            $('#txtSearch').on('keyup', () => {
+                getUsers();
+            })
+        });
+
+
+    </script>*@

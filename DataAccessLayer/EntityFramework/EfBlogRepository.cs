@@ -12,14 +12,22 @@ namespace DataAccess.EntityFramework
 {
     public class EfBlogRepository : GenericRepository<Blog>, IBlogDal
     {
-        public List<Blog> GetListWithCategory()
+        public List<Blog> GetListWithCategory(string searchText)
         {
-            using (Context context=new Context())
+            using (Context context = new Context())
             {
-               var result= context.Blogs.Include(x => x.Category).ToList();
-               return result;
+                if (string.IsNullOrEmpty(searchText) == true)
+                {
+                    var result = context.Blogs.Include(x => x.Category).ToList();
+                    return result;
+                }
+                else
+                {
+                    var result = context.Blogs.Include(x => x.Category).Where(x => x.BlogTitle.ToLower().Contains(searchText)).ToList();
+                    return result;
+                }
             }
-            
+
         }
     }
 }
