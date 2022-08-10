@@ -23,7 +23,6 @@ namespace coreProject2.Controllers
         {
             newsLetter.MailStatus = true;
             newsLetterManager.AddNewsLetter(newsLetter);
-            //return PartialView();
             return RedirectToAction("Index", "Blog");
         }
     }
