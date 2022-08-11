@@ -9,7 +9,6 @@ namespace coreProject2.Controllers
 {
     public class WriterController : Controller
     {
-        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
