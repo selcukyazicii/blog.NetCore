@@ -26,19 +26,20 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
-
+        //Find ID
         public Blog GetById()
         {
             throw new NotImplementedException();
         }
-
+        //Get All Blogs
         public List<Blog> GetList()
         {
             return _blogDal.GetAll();
         }
+        //Get the Last 3 Posts in Blog
         public List<Blog> GetLast3Blog()
         {
-            return _blogDal.GetAll().Take(3).ToList();
+            return _blogDal.GetAll().OrderByDescending(x => x.CreateDate).Take(3).ToList();
         }
         public List<Blog> ListCategoryWithBlog(string searchText)
         {
