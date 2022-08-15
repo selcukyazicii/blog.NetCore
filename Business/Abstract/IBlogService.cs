@@ -8,13 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IBlogService
-    {
-        void AddBlog(Blog blog);
-        void DeleteBlog(Blog blog);
-        void UpdateBlog(Blog blog);
-        List<Blog> GetList();
-        Blog GetById();
+    public interface IBlogService:IGenericService<Blog>
+    {      
         List<Blog> ListCategoryWithBlog(string searchText);
         List<Blog> ListBlogByWriter(int id);
     }

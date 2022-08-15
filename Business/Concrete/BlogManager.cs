@@ -17,15 +17,9 @@ namespace Business.Concrete
         {
             _blogDal = blogDal;
         }
-        public void AddBlog(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public void DeleteBlog(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
+      
         //Find ID
         public Blog GetById()
         {
@@ -51,14 +45,31 @@ namespace Business.Concrete
             return _blogDal.GetAll(x => x.BlogID == id);
         }
 
-        public void UpdateBlog(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<Blog> ListBlogByWriter(int id)
         {
             return _blogDal.GetAll(x => x.WriterId == id);
+        }
+
+        public void Add(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

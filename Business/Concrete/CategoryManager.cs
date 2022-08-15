@@ -17,29 +17,25 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-        public void AddCategory(Category category)
+        public void Add(Category t)
         {
-            _categoryDal.Insert(category);
-        }
-
-        public void DeleteCategory(Category category)
+            _categoryDal.Insert(t);
+        }        
+        public void Delete(Category t)
         {
-            _categoryDal.Delete(category);
+            _categoryDal.Delete(t);
         }
-
         public Category GetById(int id)
         {
             return _categoryDal.GeyById(id);
         }
-
         public List<Category> GetList()
         {
             return _categoryDal.GetAll();
         }
-
-        public void UpdateCategory(Category category)
+        public void Update(Category t)
         {
-            _categoryDal.Update(category);
+            _categoryDal.Update(t);
         }
     }
 }
