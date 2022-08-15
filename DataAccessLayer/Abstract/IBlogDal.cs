@@ -1,4 +1,5 @@
-﻿using Entity.Concrete;
+﻿using Entity;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace DataAccess.Abstract
     public interface IBlogDal:IGenericDal<Blog>
     {
         List<Blog> GetListWithCategory(string searchText);
+        List<BlogListesiVM> BlogListele(int id);
     }
 }

@@ -29,6 +29,10 @@ namespace coreProject2.Controllers
             var data = _blogManager.ListCategoryWithBlog(searchText);
             return View("Index", data);
         }
-        
+        public IActionResult BlogListByWriter()
+        {
+            var value = _blogManager.BlogListele(1);
+            return View(value);
+        }
     }
 }

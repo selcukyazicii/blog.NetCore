@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
+using Entity;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -45,13 +46,18 @@ namespace Business.Concrete
             return _blogDal.GetAll(x => x.BlogID == id);
         }
 
-        
+
+
 
         public List<Blog> ListBlogByWriter(int id)
         {
             return _blogDal.GetAll(x => x.WriterId == id);
         }
-
+        public List<BlogListesiVM> BlogListele(int id)
+        {
+           var a= _blogDal.BlogListele(id);
+            return a;
+        }
         public void Add(Blog t)
         {
             throw new NotImplementedException();
