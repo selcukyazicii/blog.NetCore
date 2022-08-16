@@ -44,7 +44,7 @@ namespace coreProject2.Controllers
             List<SelectListItem> categoryValue = (from x in categoryManager.GetList()
                                                   select new SelectListItem
                                                   {
-                                                      Text=x.CategoryName,
+                                                      Text = x.CategoryName,
                                                       Value = x.CategoryId.ToString()
                                                   }).ToList();
 
@@ -72,6 +72,12 @@ namespace coreProject2.Controllers
                 }
             }
             return View();
+        }
+        public IActionResult DeleteBlog(int id)
+        {
+            var blogs = _blogManager.GetById(id); //get Blog
+            _blogManager.Delete(blogs);           //delete this blog 
+            return RedirectToAction("BlogListByWriter");
         }
     }
 }

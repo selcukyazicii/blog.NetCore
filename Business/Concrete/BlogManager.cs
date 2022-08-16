@@ -65,7 +65,7 @@ namespace Business.Concrete
 
         public void Delete(Blog t)
         {
-            throw new NotImplementedException();
+            _blogDal.Delete(t);
         }
 
         public void Update(Blog t)
@@ -75,7 +75,7 @@ namespace Business.Concrete
 
         public Blog GetById(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.GeyById(id);
         }
     }
 }
