@@ -79,5 +79,17 @@ namespace coreProject2.Controllers
             _blogManager.Delete(blogs);           //delete this blog 
             return RedirectToAction("BlogListByWriter");
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var blogId = _blogManager.GetById(id);
+            return View(blogId);
+        }
+        [HttpPost]
+        public IActionResult Edit(Blog blog)
+        {
+            _blogManager.Update(blog);
+            return RedirectToAction("BlogListByWriter", "Blog");
+        }
     }
 }

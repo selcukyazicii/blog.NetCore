@@ -1,0 +1,37 @@
+﻿@model Entity.Concrete.Blog
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+@using (Html.BeginForm("Edit", "Blog", FormMethod.Post))
+{
+
+    @Html.Label("Writer ID")
+    @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
+
+    @Html.Label("Blog ID")
+    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog Başlık")
+    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog Küçük Görsel")
+    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog Görsel")
+    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog Kategori")
+    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    @*@Html.DropDownListFor(x => x.CategoryId, (IEnumerable<SelectListItem>)ViewBag.cm, new { @class = "form-control" })*@
+    @*@Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.cm, new { @class = "form-control" })*@
+    <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(x => x.BlogContent, 10, 28, new { @class = "form-control" });
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+}
+
