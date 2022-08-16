@@ -83,6 +83,16 @@ namespace coreProject2.Controllers
         public IActionResult Edit(int id)
         {
             var blogId = _blogManager.GetById(id);
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categoryValue = (from x in categoryManager.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryId.ToString()
+                                                  }).ToList();
+            ViewBag.catId = categoryValue;
+            //return View();
+            //ViewBag.catId = blogId.CategoryId.ToString();
             return View(blogId);
         }
         [HttpPost]

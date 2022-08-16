@@ -25,9 +25,8 @@
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
     <br />
     @Html.Label("Blog Kategori")
-    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
-    @*@Html.DropDownListFor(x => x.CategoryId, (IEnumerable<SelectListItem>)ViewBag.cm, new { @class = "form-control" })*@
-    @*@Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.cm, new { @class = "form-control" })*@
+    @*@Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })*@
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.catId, new { @class = "form-control" })
     <br />
     @Html.Label("Blog İçeriği")
     @Html.TextAreaFor(x => x.BlogContent, 10, 28, new { @class = "form-control" });
