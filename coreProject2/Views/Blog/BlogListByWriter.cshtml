@@ -13,6 +13,8 @@
         <th>Oluşturma</th>
         <th>Kategori</th>
         <th>Durum</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -22,6 +24,9 @@
             <td>@item.CreateDate</td>
             <td>@item.Category</td>
             <td>@item.blogStatus</td>
+            <td><a href="#" class="btn btn-danger">Sil</a></td>
+            <td><a href="#" class="btn btn-warning">Düzenle</a></td>
         </tr>
     }
 </table>
+<a href="/Blog/AddBlog" class="btn btn-info">Yeni Blog Oluştur</a>

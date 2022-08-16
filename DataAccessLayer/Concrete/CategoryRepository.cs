@@ -54,5 +54,7 @@ namespace DataAccess.Concrete
             context.Update(category);
             context.SaveChanges();  
         }
+
+       
     }
 }

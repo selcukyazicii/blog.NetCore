@@ -1,11 +1,14 @@
 ﻿using Business.Concrete;
+using Business.ValidationRules;
 using DataAccess.EntityFramework;
+using Entity.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace coreProject2.Controllers
 {
@@ -33,6 +36,42 @@ namespace coreProject2.Controllers
         {
             var value = _blogManager.BlogListele(1);
             return View(value);
+        }
+        [HttpGet]
+        public IActionResult AddBlog()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categoryValue = (from x in categoryManager.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text=x.CategoryName,
+                                                      Value = x.CategoryId.ToString()
+                                                  }).ToList();
+
+            ViewBag.cm = categoryValue;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddBlog(Blog blog)
+        {
+            BlogValidator validationRules = new BlogValidator();
+            ValidationResult validationResult = validationRules.Validate(blog);
+            if (validationResult.IsValid)
+            {
+                blog.BlogStatus = true;
+                blog.WriterId = 1;
+                blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                _blogManager.Add(blog);
+                return RedirectToAction("BlogListByWriter", "Blog");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }

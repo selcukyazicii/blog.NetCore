@@ -60,7 +60,7 @@ namespace Business.Concrete
         }
         public void Add(Blog t)
         {
-            throw new NotImplementedException();
+            _blogDal.Insert(t);
         }
 
         public void Delete(Blog t)

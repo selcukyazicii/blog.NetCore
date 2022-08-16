@@ -1,6 +1,8 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +23,6 @@ namespace coreProject2.Controllers
             var values = _categoryManager.GetList();
             return PartialView(values);
         }
+        
     }
 }
