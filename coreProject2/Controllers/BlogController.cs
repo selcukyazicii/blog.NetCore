@@ -91,8 +91,6 @@ namespace coreProject2.Controllers
                                                       Value = x.CategoryId.ToString()
                                                   }).ToList();
             ViewBag.catId = categoryValue;
-            //return View();
-            //ViewBag.catId = blogId.CategoryId.ToString();
             return View(blogId);
         }
         [HttpPost]

@@ -73,6 +73,7 @@ namespace Business.Concrete
             Blog blog = new Blog();
             blog.BlogContent = t.BlogContent;
             blog.BlogTitle = t.BlogTitle;
+            blog.BlogStatus = true;
             blog.BlogImage = t.BlogImage;
             blog.BlogThumbnailImage = t.BlogThumbnailImage;
             blog.CategoryId = t.CategoryId;
