@@ -87,5 +87,9 @@ namespace Business.Concrete
         {
             return _blogDal.GeyById(id);
         }
+        public List<GetBlogsWithCategoryName> BlogListWithCatName()
+        {
+           return _blogDal.BlogListWithCategoryNamee();
+        }
     }
 }

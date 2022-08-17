@@ -17,9 +17,9 @@ namespace coreProject2.Controllers
         public IActionResult Index()
         {
             //var result = _blogManager.GetList();
-            var value = _blogManager.BlogListele(1);
-
-            return View(value);
+            //var value = _blogManager.BlogListele(2);
+            var result = _blogManager.BlogListWithCatName();
+            return View(result);
         }
     }
 }

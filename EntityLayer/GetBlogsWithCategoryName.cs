@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class BlogListesiVM
+    public class GetBlogsWithCategoryName
     {
         public bool blogStatus;
 
@@ -15,5 +15,7 @@ namespace Entity
         public DateTime CreateDate { get; set; }
         public string Category { get; set; }
         public string blogImage { get; set; }
+        public string blogContent { get; set; }
+
     }
 }

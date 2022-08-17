@@ -1,5 +1,5 @@
 ﻿@using Entity
-@model List<BlogListesiVM>
+@model List<GetBlogsWithCategoryName>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -69,31 +69,40 @@
 
                             <thead>
                                 <tr>
+                                    <th> Görsel </th>
                                     <th> Başlık </th>
                                     <th> Kategori </th>
                                     <th> Tarih </th>
                                     <th> Durum </th>
+                                    <th> Detaylar </th>
                                 </tr>
                             </thead>
                             @foreach (var item in Model)
                             {
                                 <tbody>
                                     <tr>
-                                        
+                                        <td>
+                                            <img src="@item.blogImage" class="mr-2" alt="image" />
+                                        </td>
                                         <td>
                                             @item.Title
 
                                         </td>
-                                        <td> @item.Category </td>
                                         <td>
-                                            <label>@item.CreateDate</label>
+                                            @item.Category
                                         </td>
-                                        <td> @item.blogStatus </td>
+                                        <td>
+                                            <label>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</label>
+                                        </td>
+                                        <td>
+                                            @item.blogStatus
+                                        </td>
+                                        <td>
+                                            <a href="/Blog/BlogReadMore/@item.blogId" class="btn btn-dark">Detaylar</a>
+                                        </td>
                                     </tr>
-
                                 </tbody>
                             }
-
                         </table>
 
                     </div>
@@ -222,69 +231,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-white">Todo</h4>
-                    <div class="add-items d-flex">
-                        <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
-                        <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
-                    </div>
-                    <div class="list-wrapper">
-                        <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Meeting with Alisa
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked> Call John
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Create invoice
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Print Statements
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked> Prepare for presentation
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Pick up kids from school
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"></i>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

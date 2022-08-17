@@ -35,21 +35,40 @@ namespace DataAccess.EntityFramework
         {
             using (Context context = new Context())
             {
-                
-                    var result= (from a in context.Blogs.Where(x => x.WriterId == id)
-                                 from k in context.Categories.Where(x => x.CategoryId == a.CategoryId).DefaultIfEmpty()
-                                 select new BlogListesiVM
-                                 {
-                                     blogId=a.BlogID,
-                                     Title = a.BlogTitle,
-                                     CreateDate= a.CreateDate,
-                                     Category=k.CategoryName,
-                                     blogStatus=a.BlogStatus
-                                     
 
-                                 }).ToList();
-                    return result;
+                var result = (from a in context.Blogs.Where(x => x.WriterId == id)
+                              from k in context.Categories.Where(x => x.CategoryId == a.CategoryId).DefaultIfEmpty()
+                              select new BlogListesiVM
+                              {
+                                  blogId = a.BlogID,
+                                  Title = a.BlogTitle,
+                                  CreateDate = a.CreateDate,
+                                  Category = k.CategoryName,
+                                  blogStatus = a.BlogStatus,
+                                  blogImage = a.BlogImage
 
+                              }).ToList();
+                return result;
+
+            }
+        }
+        public List<GetBlogsWithCategoryName> BlogListWithCategoryNamee()
+        {
+            using (Context context = new Context())
+            {
+                var result = (from a in context.Blogs
+                              from k in context.Categories.Where(x => x.CategoryId == a.CategoryId).DefaultIfEmpty()
+                              select new GetBlogsWithCategoryName
+                              {
+                                  blogId = a.BlogID,
+                                  Title = a.BlogTitle,
+                                  CreateDate = a.CreateDate,
+                                  Category = k.CategoryName,
+                                  blogStatus = a.BlogStatus,
+                                  blogImage = a.BlogImage,
+                                  blogContent = a.BlogContent
+                              }).ToList();
+                return result;
             }
         }
     }

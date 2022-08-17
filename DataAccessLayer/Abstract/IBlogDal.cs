@@ -12,5 +12,6 @@ namespace DataAccess.Abstract
     {
         List<Blog> GetListWithCategory(string searchText);
         List<BlogListesiVM> BlogListele(int id);
+        List<GetBlogsWithCategoryName> BlogListWithCategoryNamee();
     }
 }
