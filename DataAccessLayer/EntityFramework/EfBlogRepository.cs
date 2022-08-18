@@ -2,6 +2,7 @@
 using DataAccess.Concrete;
 using Entity;
 using Entity.Concrete;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,12 +32,26 @@ namespace DataAccess.EntityFramework
 
         }
 
+        //id parametresi opsiyonel hale getirildi,varsa id ye göre,yoksa tüm blogları getiriyor
         public List<BlogListesiVM> BlogListele(int id)
         {
+            var predicate = PredicateBuilder.New<Blog>();
+            
+            if (id>0)
+            { 
+                predicate = predicate.And(te => te.WriterId == id);
+
+            }
+            else
+            {
+                predicate = predicate.And(te => te.WriterId > id);
+
+            }
+
             using (Context context = new Context())
             {
 
-                var result = (from a in context.Blogs.Where(x => x.WriterId == id)
+                var result = (from a in context.Blogs.Where(predicate)
                               from k in context.Categories.Where(x => x.CategoryId == a.CategoryId).DefaultIfEmpty()
                               select new BlogListesiVM
                               {

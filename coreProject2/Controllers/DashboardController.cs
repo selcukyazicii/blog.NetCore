@@ -16,10 +16,10 @@ namespace coreProject2.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            //var result = _blogManager.BlogListWithCatName();
             //var result = _blogManager.GetList();
-            //var value = _blogManager.BlogListele(2);
-            var result = _blogManager.BlogListWithCatName();
-            return View(result);
+            var value = _blogManager.BlogListele(0);
+            return View(value);
         }
     }
 }
