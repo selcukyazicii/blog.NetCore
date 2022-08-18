@@ -13,19 +13,20 @@ namespace DataAccess.EntityFramework
     public class EfCategoryRepository : GenericRepository<Category>, ICategoryDal
     {
        
-        public List<CategoryVM> GetCategoryWithBlogCount(Category category)
+        public List<CategoryVM> GetCategoryWithBlogCount()
         {
 
             using (Context context = new Context())
             {
+               
 
-                var result = (from a in context.Blogs
-                              from k in context.Categories.Where(x => x.CategoryId == a.CategoryId)
+                var result = (from a in context.Categories
                               select new CategoryVM
                               {
-                                  CategoryName = k.CategoryName,
-                                  BlogCount = k.Blogs.Count,
-                                  CategoryDescription = k.CategoryDescription
+                                  CategoryId=a.CategoryId,
+                                  CategoryName = a.CategoryName,
+                                  BlogCount = context.Blogs.Where(x=> x.CategoryId== a.CategoryId).Count(),
+                                  CategoryDescription = a.CategoryDescription
 
                               }).ToList();
                 return result;
