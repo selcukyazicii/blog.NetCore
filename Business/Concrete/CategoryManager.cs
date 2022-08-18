@@ -37,5 +37,9 @@ namespace Business.Concrete
         {
             _categoryDal.Update(t);
         }
+        public void GetCategoryWithCount(Blog blog)
+        {
+            var data = _categoryDal.GetAll(x => x.CategoryId == blog.CategoryId).Count();
+        }
     }
 }

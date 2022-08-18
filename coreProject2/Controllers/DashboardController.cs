@@ -18,7 +18,7 @@ namespace coreProject2.Controllers
         {
             //var result = _blogManager.BlogListWithCatName();
             //var result = _blogManager.GetList();
-            var value = _blogManager.BlogListele(0);
+            var value = _blogManager.BlogListele(0).Take(5).ToList();
             return View(value);
         }
     }

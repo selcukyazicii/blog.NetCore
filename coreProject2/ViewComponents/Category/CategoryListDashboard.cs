@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace coreProject2.ViewComponents
+namespace coreProject2.ViewComponents.Category
 {
-    public class CategoryListViewComponent:ViewComponent
+    public class CategoryListDashboard:ViewComponent
     {
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
         public IViewComponentResult Invoke()
         {
-            var values = _categoryManager.GetList();
-            return View(values);
+            var data = _categoryManager.GetList();
+            return View(data);
         }
     }
 }
