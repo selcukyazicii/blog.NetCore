@@ -30,7 +30,7 @@ namespace coreProject2.Controllers
             {
                 writer.WriterStatus = true;
                 writer.WriterAbout = "Deneme yazısı";
-                writerManager.AddWriter(writer);
+                writerManager.Add(writer);
                 return RedirectToAction("Index", "Blog");
             }
             else
