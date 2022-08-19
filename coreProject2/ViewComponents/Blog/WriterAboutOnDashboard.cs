@@ -15,6 +15,7 @@ namespace coreProject2.ViewComponents.Blog
         public IViewComponentResult Invoke()
         {
             var data = _writerManager.GetWriterById(1);
+
             return View(data);
         }
     }
