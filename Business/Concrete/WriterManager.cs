@@ -22,7 +22,7 @@ namespace Business.Concrete
             _writerDal.Insert(t);
         }
 
-         
+
         public void Delete(Writer t)
         {
             throw new NotImplementedException();
@@ -46,7 +46,15 @@ namespace Business.Concrete
 
         public void Update(Writer t)
         {
-            throw new NotImplementedException();
+            Writer writer = new Writer();
+            writer.WriterName = t.WriterName;
+            writer.WriterAbout = t.WriterAbout;
+            writer.WriterImage = t.WriterImage;
+            writer.WriterMail = t.WriterMail;
+            writer.WriterId = t.WriterId;
+            writer.WriterStatus = true;
+            writer.WriterPassword = t.WriterPassword;
+            _writerDal.Update(writer);
         }
     }
 }

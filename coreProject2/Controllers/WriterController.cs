@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.EntityFramework;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -42,10 +43,18 @@ namespace coreProject2.Controllers
             return PartialView();
         }
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult WriterEditProfile()
         {
             var writer = _writerManager.GetById(1);
             return View(writer);
+        }
+        [HttpPost]
+        public IActionResult WriterEditProfile(Writer writer)
+        {
+            
+            _writerManager.Update(writer);
+            return RedirectToAction("WriterEditProfile", "Writer");
         }
     }
 }
