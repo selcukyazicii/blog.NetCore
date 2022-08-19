@@ -30,7 +30,7 @@ namespace Business.Concrete
 
         public Writer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _writerDal.GeyById(id);
         }
 
         public List<Writer> GetList()
