@@ -18,8 +18,6 @@ namespace DataAccess.EntityFramework
 
             using (Context context = new Context())
             {
-               
-
                 var result = (from a in context.Categories
                               select new CategoryVM
                               {

@@ -16,9 +16,10 @@ namespace coreProject2.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            //var result = _blogManager.BlogListWithCatName();
-            //var result = _blogManager.GetList();
-            var value = _blogManager.BlogListele(0).Take(5).ToList();
+            ViewBag.ToplamBlog = _blogManager.GetList().Count();
+            //ViewBag.BuHaftakiBlog = _blogManager.GetList().Where(x => x.CreateDate < DateTime.Today.DayOfWeek(-7));
+            var value = _blogManager.BlogListele(0).OrderByDescending(x => x.CreateDate).Take(5).ToList();
+
             return View(value);
         }
     }
