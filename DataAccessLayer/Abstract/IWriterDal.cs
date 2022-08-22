@@ -1,4 +1,5 @@
-﻿using Entity.Concrete;
+﻿using coreProject2.Entity;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using coreProject2.Entity;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using System;
@@ -17,11 +18,12 @@ namespace Business.Concrete
             _writerDal = writerDal;
         }
 
+        
+
         public void Add(Writer t)
-        {
+        {           
             _writerDal.Insert(t);
         }
-
 
         public void Delete(Writer t)
         {
