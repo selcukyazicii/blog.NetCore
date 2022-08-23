@@ -33,7 +33,7 @@ namespace Business.Concrete
 
         public List<Notification> GetList()
         {
-            throw new NotImplementedException();
+            return _notificationDal.GetAll();
         }
 
         public void Update(Notification t)

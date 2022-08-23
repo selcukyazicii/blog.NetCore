@@ -16,10 +16,12 @@ namespace coreProject2.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            var days = DateTime.Now;
             ViewBag.ToplamBlog = _blogManager.GetList().Count();
             ViewBag.ToplamKategoriSayisi = _categoryManager.GetList().Count();
             ViewBag.SizinBlogSayiniz = _blogManager.BlogListele(2).Count();
-
+            //ViewBag.UcGunBlog = _blogManager.GetList().Where(x => x.CreateDate > DateTime.Now.AddDays(-3) || x.CreateDate < DateTime.Now);
+            //ViewBag.UcGunBlog = _blogManager.GetList().Where(x => x.CreateDate.AddDays(3)>=DateTime.Now.AddDays(0));
 
 
             var value = _blogManager.BlogListele(0).OrderByDescending(x => x.CreateDate).Take(5).ToList();
