@@ -20,10 +20,7 @@ namespace coreProject2.Controllers
             ViewBag.ToplamBlog = _blogManager.GetList().Count();
             ViewBag.ToplamKategoriSayisi = _categoryManager.GetList().Count();
             ViewBag.SizinBlogSayiniz = _blogManager.BlogListele(2).Count();
-            //ViewBag.UcGunBlog = _blogManager.GetList().Where(x => x.CreateDate > DateTime.Now.AddDays(-3) || x.CreateDate < DateTime.Now);
-            //ViewBag.UcGunBlog = _blogManager.GetList().Where(x => x.CreateDate.AddDays(3)>=DateTime.Now.AddDays(0));
-
-
+            ViewBag.UcGunBlog = _blogManager.GetList().Where(x => x.CreateDate >= DateTime.Now.Date.AddDays(-3) && x.CreateDate <= DateTime.Now.Date).Count();
             var value = _blogManager.BlogListele(0).OrderByDescending(x => x.CreateDate).Take(5).ToList();
 
             return View(value);
