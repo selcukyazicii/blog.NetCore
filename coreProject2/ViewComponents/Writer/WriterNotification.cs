@@ -13,7 +13,7 @@ namespace coreProject2.ViewComponents.Writer
         NotificationManager _notificationManager = new NotificationManager(new EfNotificationRepository());
         public IViewComponentResult Invoke()
         {
-            var values = _notificationManager.GetList();
+            var values = _notificationManager.GetList().Where(x=>x.NotificationStatus==true).ToList();
             return View(values);
         }
     }
