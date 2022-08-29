@@ -2,6 +2,7 @@
 using Business.Concrete;
 using coreProject2.Entity;
 using coreProject2.Models;
+using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +21,12 @@ namespace coreProject2.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            Context context = new Context();
+            var writerMail = User.Identity.Name;
+            ViewBag.result = writerMail; //giriş yapan kullanıcının mailini tutuyor//writer tablosundaki maili tutuyor
+
+            var writerName = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.name = writerName;
             return View();
         }
         public IActionResult WriterProfile()
@@ -29,7 +36,7 @@ namespace coreProject2.Controllers
 
         public IActionResult WriterMail()
         {
-            return View(); 
+            return View();
         }
         [AllowAnonymous]
         public IActionResult Test()
@@ -57,7 +64,7 @@ namespace coreProject2.Controllers
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)
         {
-            
+
             _writerManager.Update(writer);
             return RedirectToAction("WriterEditProfile", "Writer");
         }
@@ -72,7 +79,7 @@ namespace coreProject2.Controllers
         public IActionResult WriterAdd(AddProfileImage addProfileImage)
         {
             var writer = new Writer();
-            if (addProfileImage.WriterImage!=null)
+            if (addProfileImage.WriterImage != null)
             {
                 var extensions = Path.GetExtension(addProfileImage.WriterImage.FileName);
                 var newImageName = Guid.NewGuid() + extensions;
