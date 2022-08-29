@@ -16,14 +16,14 @@ namespace coreProject2.Controllers
     {
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Indexx()
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Index(Writer writer)
+        public async Task<IActionResult> Indexx(Writer writer)
         {
             using (Context context = new Context())
             {

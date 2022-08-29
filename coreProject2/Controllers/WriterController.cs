@@ -17,6 +17,7 @@ namespace coreProject2.Controllers
     public class WriterController : Controller
     {
         WriterManager _writerManager = new WriterManager(new EfWriterRepository());
+        [Authorize]
         public IActionResult Index()
         {
             return View();
