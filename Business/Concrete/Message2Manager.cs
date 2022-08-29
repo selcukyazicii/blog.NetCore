@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         public Message2 GetById(int id)
         {
-            throw new NotImplementedException();
+            return _message2Dal.GeyById(id);
         }
 
         public List<Message2> GetInboxListByWriter(int id)
