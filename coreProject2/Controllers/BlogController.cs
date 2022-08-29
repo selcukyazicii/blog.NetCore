@@ -103,6 +103,10 @@ namespace coreProject2.Controllers
         [HttpPost]
         public IActionResult Edit(Blog blog)
         {
+            Context context = new Context();
+            var mail2 = User.Identity.Name;
+            var idLog = context.Writers.Where(x => x.WriterMail == mail2).Select(y => y.WriterId).FirstOrDefault();
+            blog.BlogID = idLog;
             _blogManager.Update(blog);
             return RedirectToAction("BlogListByWriter", "Blog");
         }

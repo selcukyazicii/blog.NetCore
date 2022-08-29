@@ -70,6 +70,7 @@ namespace Business.Concrete
 
         public void Update(Blog t)
         {
+
             Blog blog = new Blog();
             blog.BlogContent = t.BlogContent;
             blog.BlogTitle = t.BlogTitle;
@@ -77,7 +78,7 @@ namespace Business.Concrete
             blog.BlogImage = t.BlogImage;
             blog.BlogThumbnailImage = t.BlogThumbnailImage;
             blog.CategoryId = t.CategoryId;
-            blog.BlogID = t.BlogID;
+            //blog.BlogID = t.BlogID;
             blog.WriterId = t.WriterId;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             _blogDal.Update(blog);
