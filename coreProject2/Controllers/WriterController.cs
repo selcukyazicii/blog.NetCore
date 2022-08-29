@@ -25,6 +25,7 @@ namespace coreProject2.Controllers
             var writerMail = User.Identity.Name;
             ViewBag.result = writerMail; //giriş yapan kullanıcının mailini tutuyor//writer tablosundaki maili tutuyor
 
+                                    
             var writerName = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterName).FirstOrDefault();
             ViewBag.name = writerName;
             return View();
@@ -58,7 +59,10 @@ namespace coreProject2.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writer = _writerManager.GetById(1);
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var userId = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
+            var writer = _writerManager.GetById(userId);
             return View(writer);
         }
         [HttpPost]

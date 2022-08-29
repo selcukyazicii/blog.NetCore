@@ -13,7 +13,7 @@ namespace coreProject2.Controllers
     {
         BlogManager _blogManager = new BlogManager(new EfBlogRepository());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public IActionResult Index()
         {
             var days = DateTime.Now;

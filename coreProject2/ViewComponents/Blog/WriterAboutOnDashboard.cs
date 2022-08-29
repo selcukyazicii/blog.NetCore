@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,8 +15,14 @@ namespace coreProject2.ViewComponents.Blog
         WriterManager _writerManager = new WriterManager(new EfWriterRepository());
         public IViewComponentResult Invoke()
         {
-            var data = _writerManager.GetWriterById(1);
+            Context context = new Context();
+            var writerMail = User.Identity.Name;
+            var loginid = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
 
+
+
+
+            var data = _writerManager.GetWriterById(loginid);
             return View(data);
         }
     }
