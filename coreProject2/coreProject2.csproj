@@ -32,6 +32,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\WriterImageFile\" />
+    <Folder Include="wwwroot\writer\pages\forms\" />
+    <Folder Include="wwwroot\writer\pages\icons\" />
   </ItemGroup>
 
 </Project>
