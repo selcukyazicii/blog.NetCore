@@ -45,7 +45,12 @@ namespace coreProject2.Areas.Admin.Controllers
                 }
             }
             return View();
-            return View();
+        }
+        public IActionResult DeleteCategory(int id)
+        {
+            var idLog = _categoryManager.GetById(id);
+            _categoryManager.Delete(idLog);
+            return RedirectToAction("Index");
         }
     }
 }
