@@ -8,7 +8,7 @@ namespace coreProject2.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index2()
         {
             return View();
         }

@@ -21,6 +21,19 @@ namespace coreProject2.Areas.Admin.Controllers
             return Json(jsonWriters);
         }
 
+        public IActionResult GetWriterById(int writerid)
+        {
+            var findWriter = writers.FirstOrDefault(x => x.Id == writerid);
+            var jsonWriter = JsonConvert.SerializeObject(findWriter);
+            return Json(jsonWriter);
+        }
+        [HttpPost]
+        public IActionResult WriterAdd(WriterClass writerClass)
+        {
+            writers.Add(writerClass);
+            var jsonWriters = JsonConvert.SerializeObject(writerClass);
+            return Json(jsonWriters);
+        }
         public static List<WriterClass> writers = new List<WriterClass>
         {
             new WriterClass
