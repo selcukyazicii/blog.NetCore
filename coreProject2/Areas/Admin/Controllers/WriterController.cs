@@ -34,6 +34,12 @@ namespace coreProject2.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writerClass);
             return Json(jsonWriters);
         }
+        public IActionResult WriterDelete(int id)
+        {
+            var writer = writers.FirstOrDefault(x => x.Id == id);
+            writers.Remove(writer);
+            return Json(writer);
+        }
         public static List<WriterClass> writers = new List<WriterClass>
         {
             new WriterClass
@@ -46,6 +52,6 @@ namespace coreProject2.Areas.Admin.Controllers
                 Id=2,
                 Name="Ahmet"
             }
-        }; 
+        };
     }
 }

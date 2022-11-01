@@ -9,6 +9,7 @@
 <button type="button" id="btnGetList" class="btn btn-outline-primary">Yazar Listesi</button>
 <button type="button" id="btnGetWriter" class="btn btn-outline-success">Yazar Getir</button>
 <button type="button" id="btnAddWriter" class="btn btn-outline-info">Yazar Ekle</button>
+<button type="button" id="btnDeleteWriter" class="btn btn-outline-info">Yazar Sil</button>
 <br />
 <br />
 <div id="writerList">
@@ -22,11 +23,16 @@
     <input type="text" id="writerid" placeholder="Yazar ID değeri girin" class="form-control" />
 </div>
 <br />
-<div >
+<div>
     <input type="text" class="form-control" id="txtWriterId" placeholder="Yazar ID" />
     <input type="text" class="form-control" id="txtWriterName" placeholder="Yazar Adı" />
     <br />
 </div>
+
+<div>
+    <input type="text" class="form-control" id="asdef" placeholder="Silinecek Yazar ID" />
+</div>
+
 
 @section scripts{
     <script>
@@ -64,15 +70,15 @@
                     console.log(w);
 
                     let leo = `<table class=table table-bordered>
-                            <tr>
-                            <th>Yazar ID </th>
-                            <th>Yazar Adı</th>
-                            </tr>
-                            <tr>
-                            <td>${w.Id}</td>
-                            <td>${w.Name}</td>
-                            </tr>
-                            </table>`;
+                                <tr>
+                                <th>Yazar ID </th>
+                                <th>Yazar Adı</th>
+                                </tr>
+                                <tr>
+                                <td>${w.Id}</td>
+                                <td>${w.Name}</td>
+                                </tr>
+                                </table>`;
                     $("#getWriter").html(leo);
                 }
             })
@@ -95,6 +101,18 @@
             })
         })
 
+
+        $("#btnDeleteWriter").click(x => {
+            let id = $("#asdef").val();
+            $.ajax({
+                url: "/Admin/Writer/WriterDelete/"+id,
+                type: "post",
+                dataType: "json",
+                success: function (func) {
+                    alert("Yazar silme işlemi başarılı şekilde gerçekleştirildi");
+                }
+            });
+        });
 
     </script>
 }
