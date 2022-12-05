@@ -82,8 +82,9 @@ namespace coreProject2.Controllers
         }
         public IActionResult DeleteBlog(int id)
         {
-            var blogs = _blogManager.GetById(id); //get Blog
-            _blogManager.Delete(blogs);           //delete this blog 
+            var blogs = _blogManager.GetById(id); 
+            _blogManager.Delete(blogs);
+            ViewBag.idd = id;
             return RedirectToAction("BlogListByWriter");
         }
         [HttpGet]

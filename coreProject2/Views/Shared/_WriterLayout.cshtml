@@ -21,6 +21,8 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="~/writer/assets/css/style.css">
     <!-- End layout styles -->
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
     <link rel="shortcut icon" href="~/writer/assets/images/favicon.ico" />
 </head>
 <body>
@@ -77,7 +79,7 @@
                             <span class="count-symbol bg-warning"></span>
                         </a>
 
-                        @await Component.InvokeAsync("WriterMessageNotification") 
+                        @await Component.InvokeAsync("WriterMessageNotification")
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -104,7 +106,7 @@
                 </button>
             </div>
         </nav>
-        <div class="container-fluid page-body-wrapper"> 
+        <div class="container-fluid page-body-wrapper">
             @await Html.PartialAsync("~/Views/Writer/_WriterNavbarPartial.cshtml")
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -122,6 +124,10 @@
     <script src="~/writer/assets/js/off-canvas.js"></script>
     <script src="~/writer/assets/js/hoverable-collapse.js"></script>
     <script src="~/writer/assets/js/misc.js"></script>
-
+    <script src="~/Content/html/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <link href="~/Content/html/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
 </body>
 </html>

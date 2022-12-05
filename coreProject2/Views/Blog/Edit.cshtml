@@ -9,11 +9,11 @@
 @using (Html.BeginForm("Edit", "Blog", FormMethod.Post))
 {
 
-    @Html.Label("Writer ID")
-    @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
+    @*@Html.Label("Writer ID")*@
+    @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control", @readonly = true, style = "display: none;" })
 
-    @Html.Label("Blog ID")
-    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+    @*@Html.Label("Blog ID")*@
+    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control", @readonly = true, style = "display: none;" })
     <br />
     @Html.Label("Blog Başlık")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
@@ -26,11 +26,12 @@
     <br />
     @Html.Label("Blog Kategori")
     @*@Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })*@
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.catId, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.catId, new { @class = "form-control", @readonly = true })
     <br />
     @Html.Label("Blog İçeriği")
     @Html.TextAreaFor(x => x.BlogContent, 10, 28, new { @class = "form-control" });
     <br />
-    <button class="btn btn-primary">Ekle</button>
+    <button class="btn btn-primary" >Ekle</button>
+    <button class="btn btn-primary">Deneme</button>
 }
 

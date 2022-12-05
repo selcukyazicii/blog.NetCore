@@ -20,7 +20,6 @@ namespace coreProject2.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writers);
             return Json(jsonWriters);
         }
-
         public IActionResult GetWriterById(int writerid)
         {
             var findWriter = writers.FirstOrDefault(x => x.Id == writerid);
