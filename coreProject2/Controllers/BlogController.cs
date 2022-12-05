@@ -40,6 +40,7 @@ namespace coreProject2.Controllers
             var loginId = _context.Writers.Where(x => x.WriterMail == mail).Select(y => y.WriterId).FirstOrDefault();
             var value = _blogManager.BlogListele(loginId);
             return View(value);
+
         }
         [HttpGet]
         public IActionResult AddBlog()
