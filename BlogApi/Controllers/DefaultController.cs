@@ -21,5 +21,32 @@ namespace BlogApi.Controllers
                 return Ok(values);
             }
         }
+        [HttpPost]
+        public IActionResult EmployeeAdd(Employee employee)
+        {
+            using (Context context= new Context())
+            {
+                context.Employees.Add(employee);
+                context.SaveChanges();
+                return Ok();
+            }
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetEmployeeWithId(int id)
+        {
+            using (Context context=new Context())
+            {
+                var data = context.Employees.Find(id);
+                if (data==null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(data);
+                }
+                
+            }
+        }
     }
 }
