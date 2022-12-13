@@ -23,6 +23,7 @@ namespace coreProject2.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> AddEmployee(Class1 parameters)
         {
             var httpClient = new HttpClient();

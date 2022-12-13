@@ -1,0 +1,13 @@
+﻿@using coreProject2.Controllers
+@model Class1
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" >
+    <input type="hidden" asp-for="ID"/>
+    <label>Çalışan Adı Soyadı:</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
