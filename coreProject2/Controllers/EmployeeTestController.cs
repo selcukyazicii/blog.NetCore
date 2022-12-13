@@ -11,7 +11,7 @@ namespace coreProject2.Controllers
 {
     public class EmployeeTestController : Controller
     {
-        public async Task<IActionResult>Index()
+        public async Task<IActionResult> Index()
         {
             var http = new HttpClient();
             var responseMessage = await http.GetAsync("https://localhost:44303/api/Default");
@@ -41,7 +41,7 @@ namespace coreProject2.Controllers
         public async Task<IActionResult> EditEmployee(int id)
         {
             var httpClient = new HttpClient();
-            var responseMessage = await httpClient.GetAsync("https://localhost:44303/api/Default/"+id);
+            var responseMessage = await httpClient.GetAsync("https://localhost:44303/api/Default/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonEmployee = await responseMessage.Content.ReadAsStringAsync();
@@ -57,12 +57,23 @@ namespace coreProject2.Controllers
             var httpClient = new HttpClient();
             var jsonEmployee = JsonConvert.SerializeObject(parameters);
             var content = new StringContent(jsonEmployee, Encoding.UTF8, "application/json");
-            var responseMessage=await httpClient.PutAsync("https://localhost:44303/api/Default", content);
+            var responseMessage = await httpClient.PutAsync("https://localhost:44303/api/Default", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View(parameters);
+        }
+        [HttpGet]
+        public async Task<IActionResult>DeleteEmployee(int id)
+        {
+            var httpClient = new HttpClient();
+            var responseMessage = await httpClient.DeleteAsync("https://localhost:44303/api/Default/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 
