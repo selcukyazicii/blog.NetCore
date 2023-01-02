@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-    public class Context : IdentityDbContext<AppUser>
+    public class Context : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,6 +28,8 @@ namespace DataAccess.Concrete
                 .WithMany(z => z.WriterReceiver)
                 .HasForeignKey(a => a.ReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<About> Abouts { get; set; }
