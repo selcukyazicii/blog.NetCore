@@ -38,7 +38,7 @@ namespace coreProject2.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Login");
+                    return RedirectToAction("Indexx", "Login");
                 }
                 else
                 {

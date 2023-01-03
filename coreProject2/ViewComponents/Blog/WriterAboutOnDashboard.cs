@@ -17,11 +17,8 @@ namespace coreProject2.ViewComponents.Blog
         {
             Context context = new Context();
             var writerMail = User.Identity.Name;
+            ViewBag.name = writerMail;
             var loginid = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
-
-
-
-
             var data = _writerManager.GetWriterById(loginid);
             return View(data);
         }
