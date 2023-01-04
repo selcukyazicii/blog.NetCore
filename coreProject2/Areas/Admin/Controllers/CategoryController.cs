@@ -16,9 +16,9 @@ namespace coreProject2.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryRepository());
-        public IActionResult Index(int page=1)
+        public IActionResult Index()
         {
-            var result = _categoryManager.GetList().ToPagedList(page,3);
+            var result = _categoryManager.GetList().ToPagedList();
             return View(result);
         }
         [HttpGet]
