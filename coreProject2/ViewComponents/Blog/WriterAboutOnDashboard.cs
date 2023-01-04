@@ -16,9 +16,10 @@ namespace coreProject2.ViewComponents.Blog
         public IViewComponentResult Invoke()
         {
             Context context = new Context();
-            var writerMail = User.Identity.Name;
-            ViewBag.name = writerMail;
-            var loginid = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
+            var userName = User.Identity.Name;
+            ViewBag.name = userName;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(x => x.Email).FirstOrDefault();
+            var loginid = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
             var data = _writerManager.GetWriterById(loginid);
             return View(data);
         }
