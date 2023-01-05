@@ -59,8 +59,10 @@ namespace coreProject2.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var userMail = User.Identity.Name;
             Context context = new Context();
+            var userName = User.Identity.Name;
+            ViewBag.name = userName;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(x => x.Email).FirstOrDefault();
             var userId = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
             var writer = _writerManager.GetById(userId);
             return View(writer);

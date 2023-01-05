@@ -56,7 +56,7 @@ namespace Business.Concrete
         public List<BlogListesiVM> BlogListele(int id)
         {
            var a= _blogDal.BlogListele(id);
-            return a;
+           return a;
         }
         public void Add(Blog t)
         {
