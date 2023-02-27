@@ -13,11 +13,11 @@ using System.Linq;
 
 namespace coreProject2.Controllers
 {
-    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager _blogManager = new BlogManager(new EfBlogRepository());
         Context _context = new Context();
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var values = _blogManager.ListCategoryWithBlog(string.Empty);
