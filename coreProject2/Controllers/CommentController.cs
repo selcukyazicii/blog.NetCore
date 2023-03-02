@@ -21,6 +21,7 @@ namespace coreProject2.Controllers
         {
             return PartialView();
         }
+
         [HttpPost]
         public IActionResult PartialAddComent(Comment comment)
         {
