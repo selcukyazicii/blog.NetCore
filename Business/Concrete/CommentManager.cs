@@ -20,7 +20,7 @@ namespace Business.Concrete
         {
             comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.CommentStatus = true;
-            comment.BlogID = 4;
+            comment.BlogID = 5;
             _commentDal.Insert(comment);
         }
          
