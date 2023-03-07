@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.EntityFramework;
+using Entity;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,5 +28,6 @@ namespace coreProject2.Controllers
             newsLetterManager.AddNewsLetter(newsLetter);
             return RedirectToAction("Index", "Blog");
         }
+       
     }
 }

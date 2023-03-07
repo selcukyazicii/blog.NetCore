@@ -133,6 +133,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+    <script type="text/javascript">
+        $("#btn").click(function () {
+            let values = {
+                Mail: $("#txtMail").val()
+            };
+            $.ajax({
+                type: "post",
+                url: "/NewsLetter/SubscribeMail/",
+                data: values,
+                success: function (func) {
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                    let result = jQuery.parseJSON(func);
+                    
+                }
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
