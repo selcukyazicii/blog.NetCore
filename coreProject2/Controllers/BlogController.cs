@@ -60,7 +60,7 @@ namespace coreProject2.Controllers
         {
             Context context = new Context();
             var mail2 = User.Identity.Name;
-            var idLog = context.Writers.Where(x => x.WriterMail == mail2).Select(y => y.WriterId).FirstOrDefault();
+            var idLog = context.Writers.Where(x => x.WriterName == mail2).Select(y => y.WriterId).FirstOrDefault();
             BlogValidator validationRules = new BlogValidator();
             ValidationResult validationResult = validationRules.Validate(blog);
             if (validationResult.IsValid)
