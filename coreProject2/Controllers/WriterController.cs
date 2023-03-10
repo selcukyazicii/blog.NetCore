@@ -19,6 +19,7 @@ namespace coreProject2.Controllers
     public class WriterController : Controller
     {
         WriterManager _writerManager = new WriterManager(new EfWriterRepository());
+        UserManager userManager = new UserManager(new EfUserRepository());
 
         private readonly UserManager<AppUser> _userManager;
 
@@ -66,18 +67,9 @@ namespace coreProject2.Controllers
         }
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult WriterEditProfile()
+        public async Task<IActionResult> WriterEditProfile()
         {
-            Context context = new Context();
-            var userName = User.Identity.Name;
-            ViewBag.name = userName;
-            var userMail = context.Users.Where(x => x.UserName == userName).Select(x => x.Email).FirstOrDefault();
-            UserManager userManager = new UserManager(new EfUserRepository());
-            //var userId = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
-            //var writer = _writerManager.GetById(userId);
-            //return View(writer);
-            var id = context.Users.Where(x => x.Email == userMail).Select(y => y.Id).FirstOrDefault();
-            var values = userManager.GetById(id);
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
             return View(values);
         }
         [HttpPost]
