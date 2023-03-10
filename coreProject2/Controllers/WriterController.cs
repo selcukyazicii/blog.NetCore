@@ -6,6 +6,7 @@ using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,14 @@ namespace coreProject2.Controllers
     public class WriterController : Controller
     {
         WriterManager _writerManager = new WriterManager(new EfWriterRepository());
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public WriterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
@@ -63,9 +72,13 @@ namespace coreProject2.Controllers
             var userName = User.Identity.Name;
             ViewBag.name = userName;
             var userMail = context.Users.Where(x => x.UserName == userName).Select(x => x.Email).FirstOrDefault();
-            var userId = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
-            var writer = _writerManager.GetById(userId);
-            return View(writer);
+            UserManager userManager = new UserManager(new EfUserRepository());
+            //var userId = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
+            //var writer = _writerManager.GetById(userId);
+            //return View(writer);
+            var id = context.Users.Where(x => x.Email == userMail).Select(y => y.Id).FirstOrDefault();
+            var values = userManager.GetById(id);
+            return View(values);
         }
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)
