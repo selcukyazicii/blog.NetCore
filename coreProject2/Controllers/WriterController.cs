@@ -84,16 +84,14 @@ namespace coreProject2.Controllers
             user.NameSurname = userUpdateVM.namesurname;
             user.ImageUrl = userUpdateVM.imageurl;
             user.Email = userUpdateVM.mail;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userUpdateVM.password);
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
+            if (userUpdateVM.changepassword==true)
             {
-                return RedirectToAction("WriterEditProfile", "Writer");
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userUpdateVM.password);
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Index", "Blog");
             }
-            else
-            {
-                throw new Exception();
-            }
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("WriterEditProfile", "Writer");
         }
         [AllowAnonymous]
         [HttpGet]

@@ -12,6 +12,6 @@ namespace coreProject2.Models
         public string mail { get; set; }
         public string imageurl { get; set; }
         public string password { get; set; }
-
+        public bool changepassword { get; set; }
     }
 }
