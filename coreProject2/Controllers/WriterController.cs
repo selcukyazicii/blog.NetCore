@@ -35,7 +35,7 @@ namespace coreProject2.Controllers
             var writerMail = User.Identity.Name;
             ViewBag.result = writerMail; //giriş yapan kullanıcının mailini tutuyor//writer tablosundaki maili tutuyor
 
-                                    
+
             var writerName = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterName).FirstOrDefault();
             ViewBag.name = writerName;
             return View();
@@ -70,14 +70,29 @@ namespace coreProject2.Controllers
         public async Task<IActionResult> WriterEditProfile()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(values);
+            UserUpdateVM userUpdateVM = new UserUpdateVM();
+            userUpdateVM.mail = values.Email;
+            userUpdateVM.namesurname = values.NameSurname;
+            userUpdateVM.imageurl = values.ImageUrl;
+            userUpdateVM.username = values.UserName;
+            return View(userUpdateVM);
         }
         [HttpPost]
-        public IActionResult WriterEditProfile(Writer writer)
+        public async Task<IActionResult> WriterEditProfile(UserUpdateVM userUpdateVM)
         {
-
-            _writerManager.Update(writer);
-            return RedirectToAction("WriterEditProfile", "Writer");
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            user.NameSurname = userUpdateVM.namesurname;
+            user.ImageUrl = userUpdateVM.imageurl;
+            user.Email = userUpdateVM.mail;
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("WriterEditProfile", "Writer");
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
         [AllowAnonymous]
         [HttpGet]

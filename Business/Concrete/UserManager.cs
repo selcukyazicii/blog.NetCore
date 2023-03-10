@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         public void Update(AppUser t)
         {
-            throw new NotImplementedException();
+            _userDal.Update(t);
         }
     }
 }
