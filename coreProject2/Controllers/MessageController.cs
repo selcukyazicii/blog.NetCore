@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,12 @@ namespace coreProject2.Controllers
         [HttpGet]
         public IActionResult InBox()
         {
-            int id = 2;
-            var value = _message2Manager.GetInboxListByWriter(id);
-            return View(value);
+            Context context = new Context();
+            var userName = User.Identity.Name;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
+            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
+            var result = _message2Manager.GetInboxListByWriter(writerID);
+            return View(result);
         }
         public IActionResult MessageDetails(int id)
         {
