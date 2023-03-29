@@ -22,6 +22,7 @@ namespace Entity.Concrete
         public List<Comment> Comments { get; set; }
         public int WriterId { get; set; }
         public Writer Writer { get; set; }
+        public int BlogScore { get; set; }
 
     }
 }

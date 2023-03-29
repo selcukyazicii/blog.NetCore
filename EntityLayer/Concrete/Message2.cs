@@ -15,13 +15,10 @@ namespace Entity.Concrete
         public string MessageDetails { get; set; }
         public DateTime MessageDate { get; set; }
         public bool MessageStatus { get; set; }
-
-
-
         public Writer SenderUser { get; set; }
         public int? SenderId { get; set; }
         public Writer ReceiverUser { get; set; }
         public int? ReceiverId { get; set; }
-
+        public string ReceiverMail { get; set; }
     }
 }

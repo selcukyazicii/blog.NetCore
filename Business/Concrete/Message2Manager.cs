@@ -18,7 +18,7 @@ namespace Business.Concrete
         }
         public void Add(Message2 t)
         {
-            throw new NotImplementedException();
+            _message2Dal.Insert(t);
         }
 
         public void Delete(Message2 t)
